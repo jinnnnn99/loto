@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loto Number Autogenerator</title>
+    <style>
+        
+        button {
+            font-size: 18px;
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #result {
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Loto Number Autogenerator</h1>
+    
+    
+    <button onclick="generateLottoNumbers(5, 31)">mini loto</button>
+    <button onclick="generateLottoNumbers(6, 43)">loto6</button>
+    <button onclick="generateLottoNumbers(7, 37)">loto7</button>
+
+    <div id="result"></div>
+
+    <script>
+        function generateLottoNumbers(count, maxNumber) {
+            let lottoNumbers = [];
+
+            
+            document.getElementById("result").innerHTML = '';
+
+            while (lottoNumbers.length < count) {
+                let randomNumber = Math.floor(Math.random() * maxNumber) + 1;
+                if (!lottoNumbers.includes(randomNumber)) {
+                    lottoNumbers.push(randomNumber);
+                }
+            }
+
+            lottoNumbers.sort((a, b) => a - b);
+
+            let resultElement = document.getElementById("result");
+            let resultText = `<div class="box">${count} Numbers: ${lottoNumbers.join(", ")}</div>`;
+            resultElement.innerHTML = resultText;
+
+            
+            window.scrollTo(0, document.body.scrollHeight);
+        }
+    </script>
+</body>
+</html>
